@@ -6,14 +6,12 @@ import {
     SafeAreaView,
     StyleSheet,
     View,
-    TouchableOpacity,
     KeyboardAvoidingView,
 } from 'react-native'
 import { Button, ButtonText } from '@/components/ui/button'
 import { HStack } from '@/components/ui/hstack'
 import { VStack } from '@/components/ui/vstack'
 import { Text } from '@/components/ui/text'
-import AntDesign from '@expo/vector-icons/AntDesign'
 import FormInput from '@/components/form-elements/FormInput'
 import FormPasswordInput from '@/components/form-elements/FormPasswordInput'
 
@@ -43,32 +41,24 @@ export default function LoginScreen() {
         <FormProvider {...form}>
             <SafeAreaView style={styles.container}>
                 <KeyboardAvoidingView behavior="padding">
-                    <View style={styles.formContainer}>
+                    <VStack space="lg" style={{ padding: 40 }}>
                         <Text size="3xl" bold style={{ textAlign: 'center' }}>
                             Login with
                         </Text>
-                        <HStack style={{ justifyContent: 'center' }} space="md">
-                            <TouchableOpacity>
-                                <AntDesign
-                                    name="facebook-square"
-                                    size={40}
-                                    color="#3b5998"
-                                />
-                            </TouchableOpacity>
-                            <TouchableOpacity>
-                                <AntDesign
-                                    name="google"
-                                    size={40}
-                                    color="#3b5998"
-                                />
-                            </TouchableOpacity>
+                        <HStack style={{ justifyContent: 'center' }} space="sm">
+                            <Button variant="outline" style={{ minWidth: 120 }}>
+                                <ButtonText>Facebook</ButtonText>
+                            </Button>
+                            <Button variant="outline" style={{ minWidth: 120 }}>
+                                <ButtonText>Google</ButtonText>
+                            </Button>
                         </HStack>
                         <HStack style={{ alignItems: 'center', columnGap: 10 }}>
                             <View style={styles.separator}></View>
                             <Text>Or</Text>
                             <View style={styles.separator}></View>
                         </HStack>
-                        <VStack space="xl">
+                        <VStack space="lg">
                             <FormInput
                                 label="Email"
                                 name="email"
@@ -83,7 +73,7 @@ export default function LoginScreen() {
                                 <ButtonText>Login</ButtonText>
                             </Button>
                         </VStack>
-                    </View>
+                    </VStack>
                 </KeyboardAvoidingView>
             </SafeAreaView>
         </FormProvider>
@@ -99,9 +89,5 @@ const styles = StyleSheet.create({
         height: 1,
         flex: 1,
         backgroundColor: '#ccc',
-    },
-    formContainer: {
-        padding: 40,
-        rowGap: 30,
     },
 })
