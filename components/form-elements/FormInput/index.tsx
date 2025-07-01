@@ -1,19 +1,20 @@
-import React from 'react'
-import { Controller, useFormContext } from 'react-hook-form'
+import React from 'react';
+import { Controller, useFormContext } from 'react-hook-form';
+
 import CustomInput, {
     CustomInputProps,
-} from '@/components/form-elements/FormInput/Input'
+} from '@/components/form-elements/FormInput/Input';
 
 interface FormInputProps
     extends Pick<
         CustomInputProps,
         'label' | 'isDisabled' | 'description' | 'placeholder'
     > {
-    name: string
+    name: string;
 }
 
 export default function FormInput({ name, ...props }: FormInputProps) {
-    const { control } = useFormContext()
+    const { control } = useFormContext();
 
     return (
         <Controller
@@ -29,5 +30,5 @@ export default function FormInput({ name, ...props }: FormInputProps) {
                 />
             )}
         />
-    )
+    );
 }

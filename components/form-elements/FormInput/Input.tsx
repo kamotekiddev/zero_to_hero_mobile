@@ -1,5 +1,7 @@
-import { StyleSheet } from 'react-native'
-import React from 'react'
+import { IFormControlProps } from '@gluestack-ui/form-control/lib/types';
+import React from 'react';
+import { StyleSheet } from 'react-native';
+
 import {
     FormControl,
     FormControlError,
@@ -8,17 +10,16 @@ import {
     FormControlHelperText,
     FormControlLabel,
     FormControlLabelText,
-} from '@/components/ui/form-control'
-import { Input, InputField } from '@/components/ui/input'
-import { IFormControlProps } from '@gluestack-ui/form-control/lib/types'
+} from '@/components/ui/form-control';
+import { Input, InputField } from '@/components/ui/input';
 
 export interface CustomInputProps extends IFormControlProps {
-    value: string
-    label?: string
-    onChangeText: (text: string) => void
-    description?: string
-    error?: string
-    placeholder?: string
+    value: string;
+    label?: string;
+    onChangeText: (text: string) => void;
+    description?: string;
+    error?: string;
+    placeholder?: string;
 }
 
 export default function CustomInput({
@@ -55,6 +56,6 @@ export default function CustomInput({
                 </FormControlError>
             )}
         </FormControl>
-    )
+    );
 }
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

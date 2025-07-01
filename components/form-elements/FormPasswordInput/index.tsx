@@ -1,18 +1,19 @@
-import React from 'react'
-import { Controller, useFormContext } from 'react-hook-form'
-import { CustomInputProps } from '@/components/form-elements/FormInput/Input'
-import CustomPasswordInput from '@/components/form-elements/FormPasswordInput/PasswordInput'
+import React from 'react';
+import { Controller, useFormContext } from 'react-hook-form';
+
+import { CustomInputProps } from '@/components/form-elements/FormInput/Input';
+import CustomPasswordInput from '@/components/form-elements/FormPasswordInput/PasswordInput';
 
 interface FormInputProps
     extends Pick<
         CustomInputProps,
         'label' | 'isDisabled' | 'description' | 'placeholder'
     > {
-    name: string
+    name: string;
 }
 
 export default function FormPasswordInput({ name, ...props }: FormInputProps) {
-    const { control } = useFormContext()
+    const { control } = useFormContext();
 
     return (
         <Controller
@@ -28,5 +29,5 @@ export default function FormPasswordInput({ name, ...props }: FormInputProps) {
                 />
             )}
         />
-    )
+    );
 }
