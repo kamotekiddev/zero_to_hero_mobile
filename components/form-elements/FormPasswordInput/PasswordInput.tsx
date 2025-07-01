@@ -1,5 +1,7 @@
-import { StyleSheet } from 'react-native'
-import React, { useState } from 'react'
+import { IFormControlProps } from '@gluestack-ui/form-control/lib/types';
+import React, { useState } from 'react';
+import { StyleSheet } from 'react-native';
+
 import {
     FormControl,
     FormControlError,
@@ -8,18 +10,17 @@ import {
     FormControlHelperText,
     FormControlLabel,
     FormControlLabelText,
-} from '@/components/ui/form-control'
-import { Input, InputField, InputIcon, InputSlot } from '@/components/ui/input'
-import { IFormControlProps } from '@gluestack-ui/form-control/lib/types'
-import { EyeIcon, EyeOffIcon } from '@/components/ui/icon'
+} from '@/components/ui/form-control';
+import { EyeIcon, EyeOffIcon } from '@/components/ui/icon';
+import { Input, InputField, InputIcon, InputSlot } from '@/components/ui/input';
 
 export interface CustomPasswordInputProps extends IFormControlProps {
-    value: string
-    label?: string
-    onChangeText: (text: string) => void
-    description?: string
-    error?: string
-    placeholder?: string
+    value: string;
+    label?: string;
+    onChangeText: (text: string) => void;
+    description?: string;
+    error?: string;
+    placeholder?: string;
 }
 
 export default function CustomPasswordInput({
@@ -31,7 +32,7 @@ export default function CustomPasswordInput({
     placeholder,
     ...props
 }: CustomPasswordInputProps) {
-    const [showPassword, setShowPassword] = useState(false)
+    const [showPassword, setShowPassword] = useState(false);
 
     return (
         <FormControl {...props}>
@@ -65,6 +66,6 @@ export default function CustomPasswordInput({
                 </FormControlError>
             )}
         </FormControl>
-    )
+    );
 }
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
