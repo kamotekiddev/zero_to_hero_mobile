@@ -9,9 +9,9 @@ export default function _Layout() {
     if (!isAuthenticated && !isLoading) return <Redirect href="/login" />;
 
     return (
-        <Tabs>
-            <Tabs.Screen name="index" options={{ title: 'Home' }} />
-            <Tabs.Screen name="profile" options={{ title: 'Profile' }} />
+        <Tabs screenOptions={{ headerShown: false }}>
+            <Tabs.Screen name="index" options={{ tabBarLabel: 'Home' }} />
+            <Tabs.Screen name="profile" options={{ tabBarLabel: 'Profile' }} />
         </Tabs>
     );
 }

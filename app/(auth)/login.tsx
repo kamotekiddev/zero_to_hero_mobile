@@ -44,7 +44,10 @@ export default function Login() {
     const onSubmit = form.handleSubmit(async (data) => {
         try {
             const res = await login(data);
-            ctx.login(res.data.accessToken);
+            ctx.login({
+                accessToken: res.data.accessToken,
+                refreshToken: res.data.refreshToken,
+            });
             router.replace('/');
             form.reset(defaultValues);
         } catch (error) {

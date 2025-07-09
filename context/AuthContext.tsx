@@ -7,9 +7,14 @@ import React, {
     useState,
 } from 'react';
 
+interface LoginParams {
+    accessToken: string;
+    refreshToken: string;
+}
+
 interface AuthContextState {
     isAuthenticated: boolean;
-    login: (token: string) => void;
+    login: (params: LoginParams) => void;
     logout: () => void;
     isLoading: boolean;
 }
@@ -20,10 +25,17 @@ export function AuthContextProvider({ children }: PropsWithChildren) {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
-    const login = async (token: string) => {
+    const login = async ({
+        accessToken,
+        refreshToken,
+    }: {
+        accessToken: string;
+        refreshToken: string;
+    }) => {
         try {
             setIsLoading(true);
-            await SecureStore.setItemAsync('token', token);
+            await SecureStore.setItemAsync('accessToken', accessToken);
+            await SecureStore.setItemAsync('refreshToken', refreshToken);
             setIsAuthenticated(true);
         } catch (e) {
             console.error(e);
@@ -35,7 +47,8 @@ export function AuthContextProvider({ children }: PropsWithChildren) {
     const logout = async () => {
         try {
             setIsLoading(true);
-            await SecureStore.deleteItemAsync('token');
+            await SecureStore.deleteItemAsync('accessToken');
+            await SecureStore.deleteItemAsync('refreshToken');
             setIsAuthenticated(false);
         } catch (e) {
             console.error(e);
@@ -47,7 +60,7 @@ export function AuthContextProvider({ children }: PropsWithChildren) {
     useEffect(() => {
         (async () => {
             setIsLoading(true);
-            const token = await SecureStore.getItemAsync('token');
+            const token = await SecureStore.getItemAsync('accessToken');
             setIsLoading(false);
             if (token) return setIsAuthenticated(true);
             return setIsAuthenticated(false);

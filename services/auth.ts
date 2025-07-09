@@ -1,6 +1,6 @@
-import { client } from '@/services/apiClient';
+import { api } from '@/services/apiClient';
 
-interface Response {
+interface LoginResponse {
     tokenType: 'Bearer';
     accessToken: string;
     refreshToken: string;
@@ -8,4 +8,4 @@ interface Response {
 }
 
 export const login = (data: { email: string; password: string }) =>
-    client.post<Response>('/login', data);
+    api.post<LoginResponse>('/login', data);
